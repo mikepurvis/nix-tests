@@ -1,0 +1,92 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1619345332,
+        "narHash": "sha256-qHnQkEp1uklKTpx3MvKtY6xzgcqXDsz5nLilbbuL+3A=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "2ebf2558e5bf978c7fb8ea927dfaed8fefab2e28",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1619345332,
+        "narHash": "sha256-qHnQkEp1uklKTpx3MvKtY6xzgcqXDsz5nLilbbuL+3A=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "2ebf2558e5bf978c7fb8ea927dfaed8fefab2e28",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nix-ros-overlay": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1620073118,
+        "narHash": "sha256-SgRXnX7RSAUsmtcjruy6EVAC5oY+q/HxgrjTCZ4J7S8=",
+        "owner": "mikepurvis",
+        "repo": "nix-ros-overlay",
+        "rev": "91aaadb4f3021a2b04e9dfd218741d531597f044",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mikepurvis",
+        "repo": "nix-ros-overlay",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1620070173,
+        "narHash": "sha256-MZfP3m4vO44L8E3YtrDKak6ik9K0U8OGYyw0HAaw8wI=",
+        "owner": "mikepurvis",
+        "repo": "nixpkgs",
+        "rev": "6f5aaaf13794f5e8534484372384e249ead36d37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mikepurvis",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1620070173,
+        "narHash": "sha256-MZfP3m4vO44L8E3YtrDKak6ik9K0U8OGYyw0HAaw8wI=",
+        "owner": "mikepurvis",
+        "repo": "nixpkgs",
+        "rev": "6f5aaaf13794f5e8534484372384e249ead36d37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mikepurvis",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nix-ros-overlay": "nix-ros-overlay",
+        "nixpkgs": "nixpkgs_2"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

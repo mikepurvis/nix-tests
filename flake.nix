@@ -2,8 +2,8 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:lopsided98/nixpkgs/nix-ros";
-    nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay";
+    nixpkgs.url = "github:mikepurvis/nixpkgs";
+    nix-ros-overlay.url = "github:mikepurvis/nix-ros-overlay";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
