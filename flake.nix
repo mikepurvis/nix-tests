@@ -15,7 +15,9 @@
         overlays = [ nix-ros-overlay.overlay ];
       };
     in {
-      packages = pkgs.rosPackages;
+      packages = pkgs.rosPackages // {
+        ros-repo = pkgs.callPackage ./ros-repo { };
+      };
       devShell = import ./ros-base.nix { inherit pkgs; rosPackages = pkgs.rosPackages;};
     }) // {
       # overlay = import ./overlay.nix;
