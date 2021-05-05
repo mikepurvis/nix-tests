@@ -16,8 +16,8 @@
       };
     in {
       packages = pkgs.rosPackages // {
-        repos = {
-          ros = pkgs.callPackage ./repos/ros { };
+        repos = import ./repos {
+          inherit pkgs;
         };
       };
       devShell = import ./ros-base.nix {
@@ -25,7 +25,6 @@
         rosPackages = pkgs.rosPackages;
       };
     }) // {
-      # overlay = import ./overlay.nix;
       nixosModule = import ./modules;
     };
 }
