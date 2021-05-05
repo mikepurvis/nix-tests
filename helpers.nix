@@ -3,7 +3,7 @@
     { name, path, outputHash }:
       stdenvNoCC.mkDerivation {
         name = "${name}-src";
-        inherit coreutils outputHash;
+        inherit coreutils outputHash src path;
         builder = builtins.toFile "builder.sh" ''
           $coreutils/bin/cp -a $src/$path $out
         '';

@@ -18,11 +18,11 @@ in
   rosbash = pkgSrc {
     name = "rosbash";
     path = "tools/rosbash";
-    outputHash = "2s5ygezK2vPfjIXqk4PGoXsIVuv42dac8nW47rxwOPs=";
+    outputHash = "QxqbE+nkwgvnyO2bLfjuwB1XsT3vXIYh7PS00Fl7i/o=";
   };
   rosunit = pkgSrc {
     name = "rosunit";
     path = "tools/rosunit";
-    outputHash = "2s5ygezK2vPfjIXqk4PGoXsIVuv42dac8nW47rxwOPs=";
+    outputHash = "r7CLon8ziqI/WQ9MuCeo0vp7JBzWPzAtcS+HhT5tKUk=";
   };
 }
