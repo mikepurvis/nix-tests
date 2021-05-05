@@ -16,7 +16,7 @@
       };
     in {
       packages = pkgs.rosPackages // {
-        repos = import ./repos {
+        srcs = import ./srcs {
           inherit pkgs;
         };
       };
