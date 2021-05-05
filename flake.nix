@@ -16,9 +16,14 @@
       };
     in {
       packages = pkgs.rosPackages // {
-        ros-repo = pkgs.callPackage ./ros-repo { };
+        repos = {
+          ros = pkgs.callPackage ./repos/ros { };
+        };
       };
-      devShell = import ./ros-base.nix { inherit pkgs; rosPackages = pkgs.rosPackages;};
+      devShell = import ./ros-base.nix {
+        inherit pkgs;
+        rosPackages = pkgs.rosPackages;
+      };
     }) // {
       # overlay = import ./overlay.nix;
       nixosModule = import ./modules;
