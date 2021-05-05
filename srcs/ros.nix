@@ -1,11 +1,10 @@
 { fetchFromGitHub, stdenvNoCC, coreutils }:
 let
-  helpers = import ../helpers.nix { 
-    inherit fetchFromGitHub stdenvNoCC coreutils;
-  };
+  helpers = import ../helpers.nix;
 
   # Repo details.
   pkgSrc = helpers.pkgRepoSrc {
+    inherit stdenvNoCC coreutils;
     src = fetchFromGitHub {
       owner = "ros";
       repo = "ros";
