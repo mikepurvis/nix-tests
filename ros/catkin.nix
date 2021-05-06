@@ -30,9 +30,10 @@ stdenv.mkDerivation {
 
     inherit colcon;
     buildPhase = ''
+      cd /build
       $colcon/bin/colcon \
         build \
-        --paths . \
+        --paths catkin-src \
         --install-base $out
     '';
     #--cmake-args -DCATKIN_GLOBAL_INCLUDE_DESTINATION=$dev/include
