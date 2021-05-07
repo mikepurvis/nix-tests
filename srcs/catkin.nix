@@ -1,9 +1,6 @@
-{ fetchFromGitHub, stdenvNoCC, coreutils }:
+{ pkgs, fetchFromGitHub }:
 let
-  helpers = import ../helpers.nix;
-
-  pkgSrc = helpers.pkgRepoSrc {
-    inherit stdenvNoCC coreutils;
+  pkgSrc = pkgs.callPackage ../helpers/pkg-src.nix {
     src = fetchFromGitHub {
       owner = "ros";
       repo = "catkin";
@@ -13,9 +10,5 @@ let
   };
 in
 {
-  catkin = pkgSrc {
-    name = "catkin";
-    path = ".";
-    outputHash = "qlXeDe7ECp/Bw+NmXS8FP+jc1Znc7SXhjabAzkZMUiI=";
-  };
+  catkin = pkgSrc "qlXeDe7ECp/Bw+NmXS8FP+jc1Znc7SXhjabAzkZMUiI=" ".";
 }

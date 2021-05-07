@@ -1,16 +1,13 @@
-{ colcon, stdenv, gmock, python3Packages, coreutils, src }:
+{ colcon, catkin, stdenv, gmock, python3Packages, coreutils, src }:
 stdenv.mkDerivation {
-    name = "catkin";
+    name = "cpp_common";
     outputs = [ "out" "dev" ];
     inherit src;
 
     propagatedBuildInputs = [
+        catkin
         colcon
         gmock
-        python3Packages.catkin-pkg
-        python3Packages.empy
-        python3Packages.nose
-        python3Packages.setuptools
     ];
 
     phases = ["unpackPhase" "patchPhase" "buildPhase" "fixupPhase"];
@@ -24,4 +21,4 @@ stdenv.mkDerivation {
         --paths source \
         --install-base $out
     '';
-}
+} 

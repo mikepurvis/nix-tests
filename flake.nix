@@ -14,11 +14,11 @@
         inherit system;
         overlays = [ nix-ros-overlay.overlay ];
       };
-      srcs = import ./srcs { inherit pkgs; };
+      srcs = pkgs.callPackages ./srcs { };
     in {
       packages = pkgs.rosPackages // {
         inherit srcs;
-        ros = import ./ros { inherit pkgs srcs; };
+        ros = pkgs.callPackages ./ros { inherit srcs; };
         colcon = pkgs.colcon;
       };
 
