@@ -1,4 +1,5 @@
 final: prev: {
+  pkg-src = import ../lib/pkg-src.nix prev;
   srcs =
     # One row per repo, package sources within pulled to a common namespace.
     prev.callPackages ./ros.nix {} //

@@ -10,23 +10,24 @@
   outputs = { self, nixpkgs, nix-ros-overlay, flake-utils }:
     with flake-utils.lib;
     eachSystem allSystems (system:
-      let pkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          nix-ros-overlay.overlay
-          (import ./srcs)
-          (import ./packages)
-          (import ./overrides.nix)
-        ];
-      };
-    in {
-      packages = pkgs;
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            nix-ros-overlay.overlay
+            (import ./srcs)
+            (import ./packages)
+            (import ./overrides.nix)
+          ];
+        };
+      in {
+        packages = pkgs;
 
-      devShell = import ./ros-base.nix {
-        inherit pkgs;
-        rosPackages = pkgs.rosPackages;
+        devShell = import ./ros-base.nix {
+          inherit pkgs;
+          rosPackages = pkgs.rosPackages;
+        };
+      }) // {
+        nixosModule = import ./modules;
       };
-    }) // {
-      nixosModule = import ./modules;
-    };
 }
