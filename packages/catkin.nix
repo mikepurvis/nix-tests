@@ -3,6 +3,8 @@ stdenv.mkDerivation {
     name = "catkin";
     outputs = [ "out" "dev" ];
     src = srcs.catkin;
+
+    # Needs to be conditional on package having architecture_independent.
     # separateDebugInfo = true;
 
     propagatedBuildInputs = [

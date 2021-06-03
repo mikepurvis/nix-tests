@@ -1,6 +1,4 @@
 {
-  description = "A very basic flake";
-
   inputs = {
     # nixpkgs.url = "github:mikepurvis/nixpkgs";
     # nixpkgs.url = "github:NixOS/nixpkgs";
@@ -17,7 +15,7 @@
         overlays = [
           nix-ros-overlay.overlay
           (import ./srcs)
-          (import ./ros)
+          (import ./packages)
           (import ./overrides.nix)
         ];
       };
