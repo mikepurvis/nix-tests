@@ -1,6 +1,8 @@
-{ pkgs }:
-# One row per repo, package sources within pulled to a common namespace.
-pkgs.callPackages ./ros.nix { } //
-pkgs.callPackages ./roscpp_core.nix { } //
-pkgs.callPackages ./catkin.nix { } //
-{}
+final: prev: {
+  srcs =
+    # One row per repo, package sources within pulled to a common namespace.
+    prev.callPackages ./ros.nix {} //
+    prev.callPackages ./roscpp_core.nix {} //
+    prev.callPackages ./catkin.nix {} //
+    {};
+}
