@@ -2,8 +2,10 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:mikepurvis/nixpkgs";
-    nix-ros-overlay.url = "github:mikepurvis/nix-ros-overlay";
+    # nixpkgs.url = "github:mikepurvis/nixpkgs";
+    # nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:lopsided98/nixpkgs/nix-ros";
+    nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -15,17 +17,12 @@
         overlays = [
           nix-ros-overlay.overlay
           (import ./srcs)
+          (import ./ros)
+          (import ./overrides.nix)
         ];
       };
     in {
-      #packages = pkgs.rosPackages // pkgs;
       packages = pkgs;
-      #// {
-      #  inherit srcs;
-      #  ros = pkgs.callPackages ./ros { inherit srcs; };
-      #  colcon = pkgs.colcon;
-      #};
-      #overlay = import ./overlay.nix;
 
       devShell = import ./ros-base.nix {
         inherit pkgs;
