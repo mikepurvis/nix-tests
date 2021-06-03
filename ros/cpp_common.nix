@@ -20,8 +20,6 @@ stdenv.mkDerivation {
     inherit colcon;
     inherit catkin;
 
-    cmakeFlags = [ "-DCATKIN_GLOBAL_INCLUDE_DESTINATION=$dev/include" ];
-
     buildPhase = ''
       source $catkin/local_setup.sh
       $colcon/bin/colcon build \
@@ -33,6 +31,7 @@ stdenv.mkDerivation {
 
     preFixup = ''
       rm $out/{setup.sh,.catkin,.colcon_install_layout,COLCON_IGNORE}
-      moveToOutput "share/*/cmake" "$dev"
+      moveToOutput "share/$name/cmake" "$dev"
+      ln -s $out/share/$name/package.xml $dev/share/$name/package.xml
     '';
 } 

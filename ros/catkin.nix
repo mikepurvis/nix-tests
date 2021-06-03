@@ -3,6 +3,7 @@ stdenv.mkDerivation {
     name = "catkin";
     outputs = [ "out" "dev" ];
     src = srcs.catkin;
+    # separateDebugInfo = true;
 
     propagatedBuildInputs = [
         colcon
@@ -17,11 +18,17 @@ stdenv.mkDerivation {
 
     inherit colcon;
     buildPhase = ''
-      mkdir -p $dev
-      cd /build
-      $colcon/bin/colcon \
-        build \
-        --paths source \
+      $colcon/bin/colcon build \
+        --build-base /build \
+        --paths /build/source \
+        --merge-install \
         --install-base $out
+    '';
+
+    preFixup = ''
+      rm $out/{setup.sh,.catkin,.colcon_install_layout,COLCON_IGNORE}
+      moveToOutput "share/$name/cmake" "$dev"
+      mkdir -p $dev/share/$name
+      ln -s $out/share/$name/package.xml $dev/share/$name/package.xml
     '';
 }
