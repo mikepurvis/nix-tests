@@ -1,4 +1,4 @@
-{ colcon, stdenv, gmock, python3Packages, coreutils, srcs }:
+{ cmake, colcon, stdenv, gmock, python3Packages, coreutils, srcs }:
 stdenv.mkDerivation {
     name = "catkin";
     outputs = [ "out" "dev" ];

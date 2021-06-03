@@ -7,6 +7,4 @@ final: prev: {
       substituteInPlace cmake/test/gtest.cmake --replace '/usr/src/googletest' ${prev.gmock.src}
     ''; 
   });
-
-
 }
