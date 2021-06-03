@@ -1,19 +1,26 @@
-{ colcon, catkin, stdenv, gmock, python3Packages, coreutils, src }:
+{ colcon, catkin, stdenv, boost, console-bridge, gmock, python3Packages, coreutils, srcs }:
 stdenv.mkDerivation {
     name = "cpp_common";
     outputs = [ "out" "dev" ];
-    inherit src;
+    src = srcs.cpp_common;
 
     propagatedBuildInputs = [
+        boost
         catkin
+        console-bridge
+    ];
+
+    nativeBuildInputs = [
         colcon
-        gmock
     ];
 
     phases = ["unpackPhase" "patchPhase" "buildPhase" "fixupPhase"];
 
     inherit colcon;
+    inherit catkin;
+
     buildPhase = ''
+      source $catkin/setup.sh
       mkdir -p $dev
       cd /build
       $colcon/bin/colcon \

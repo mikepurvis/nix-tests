@@ -1,8 +1,8 @@
-{ colcon, stdenv, gmock, python3Packages, coreutils, src }:
+{ colcon, stdenv, gmock, python3Packages, coreutils, srcs }:
 stdenv.mkDerivation {
     name = "catkin";
     outputs = [ "out" "dev" ];
-    inherit src;
+    src = srcs.catkin;
 
     propagatedBuildInputs = [
         colcon
